@@ -22,7 +22,7 @@ public class BankDAOImpl implements BankDAO {
     }
 
     @Override
-    public void putMoneу(long id, double money) {
+    public void putMoney(long id, double money) {
 
     }
 
@@ -35,6 +35,7 @@ public class BankDAOImpl implements BankDAO {
     public List<Account> showAllAccounts() {
         Session session = sessionFactory.getCurrentSession();
         List<Account> accountList = session.createQuery("from Account", Account.class).getResultList();
+        System.out.println(accountList);
         return accountList;
     }
 }

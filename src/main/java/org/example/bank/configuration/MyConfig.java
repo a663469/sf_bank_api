@@ -1,6 +1,7 @@
 package org.example.bank.configuration;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ public class MyConfig {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("org.postgresql.Driver");
-            dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/lost");
+            dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
             dataSource.setUser("admin");
             dataSource.setPassword("admin");
         } catch (PropertyVetoException e) {

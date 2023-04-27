@@ -7,7 +7,7 @@ import java.util.List;
 public interface BankDAO {
 
     public double getBalance(long id);
-    public void putMoneу(long id, double money);
+    public void putMoney(long id, double money);
     public void takeMoney(long id, double money);
     public List<Account> showAllAccounts();
 }

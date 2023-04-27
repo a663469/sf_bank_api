@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/bank")
+@RequestMapping("/api")
 public class RESTController {
     @Autowired
     private AccountService accountService;
@@ -19,14 +19,12 @@ public class RESTController {
     @GetMapping("/")
     public List<Account> showAllAccounts() {
         System.out.println("showAllAccounts");
-        List<Account> accountList = accountService.showAllAccounts();
-        return accountList;
+        return accountService.showAllAccounts();
     }
 
     @GetMapping("/account/{id}")
     public double getBalance(@PathVariable long id) {
         System.out.println("getBalance id = " + id );
-        double balance = accountService.getBalance(id);
-        return balance;
+        return accountService.getBalance(id);
     }
 }

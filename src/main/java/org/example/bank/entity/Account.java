@@ -3,7 +3,7 @@ package org.example.bank.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "accounts")
+@Table(name = "bank.accounts")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

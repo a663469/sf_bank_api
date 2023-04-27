@@ -23,8 +23,8 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     @Transactional
-    public void putMoneу(long id, double money) {
-        bankDAO.putMoneу(id, money);
+    public void putMoney(long id, double money) {
+        bankDAO.putMoney(id, money);
     }
 
     @Override
