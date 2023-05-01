@@ -1,0 +1,8 @@
+[
+  {
+    "setDriverClass": "org.postgresql.Driver",
+    "setJdbcUrl": "jdbc:postgresql://localhost:5432/postgres",
+    "setUser": "admin",
+    "setPassword": "admin"
+  }
+]
