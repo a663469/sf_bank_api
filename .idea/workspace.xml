@@ -9,26 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="657f04fa-0d9a-4129-881e-aff62456799c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/aspect/MyLogginAspect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/entity/OperationList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/entity/operations/PutMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/entity/operations/TakeMoney.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/util/JSONGetValueByKey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/util/RetValBool.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/util/RetValDouble.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/dbcfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dbcfg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/spring-course-rest/WEB-INF/classes/dbcfg.json" afterDir="false" />
+    <list default="true" id="657f04fa-0d9a-4129-881e-aff62456799c" name="Changes" comment="Implemented the takeMoney and the putMoney methods. The configuration data Database is placed in a separate file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/configuration/MyConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/configuration/MyConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/controller/RESTController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/controller/RESTController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/dao/BankDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/dao/BankDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/dao/BankDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/dao/BankDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/service/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/service/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/service/AccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/psqlInit.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/psqlInit.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +55,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/main/sf/Spring/pcjv230424_sf_bank_api",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -78,6 +63,11 @@
     "spring.configuration.checksum": "30426ad53679107301505a8600dd3159"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\main\sf\Spring\pcjv230424_sf_bank_api\src\main\resources" />
+    </key>
+  </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.71">
     <configuration name="Tomcat 9.0.71" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.71" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER" value="false" />
@@ -209,8 +199,16 @@
       <workItem from="1682485053584" duration="138000" />
       <workItem from="1682487726015" duration="41586000" />
       <workItem from="1682946061081" duration="49000" />
-      <workItem from="1682947234104" duration="2746000" />
+      <workItem from="1682947234104" duration="8056000" />
     </task>
+    <task id="LOCAL-00001" summary="Implemented the takeMoney and the putMoney methods. The configuration data Database is placed in a separate file.">
+      <created>1682950564763</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1682950564763</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,5 +241,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+    <MESSAGE value="Implemented the takeMoney and the putMoney methods. The configuration data Database is placed in a separate file." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the takeMoney and the putMoney methods. The configuration data Database is placed in a separate file." />
   </component>
 </project>
