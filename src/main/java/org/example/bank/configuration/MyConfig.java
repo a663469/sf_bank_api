@@ -6,6 +6,7 @@ import org.example.bank.util.JSONGetValueByKey;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -23,6 +24,7 @@ import org.apache.commons.io.IOUtils;
 @ComponentScan(basePackages = "org.example.bank")
 @EnableWebMvc
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 public class MyConfig {
     @Bean
     public DataSource dataSource() {
@@ -35,11 +37,6 @@ public class MyConfig {
             dataSource.setJdbcUrl(JSONGetValueByKey.getValueByKeyInJSONArray(staticDataString, "setJdbcUrl"));
             dataSource.setUser(JSONGetValueByKey.getValueByKeyInJSONArray(staticDataString, "setUser"));
             dataSource.setPassword(JSONGetValueByKey.getValueByKeyInJSONArray(staticDataString, "setPassword"));
-
-//            dataSource.setDriverClass("org.postgresql.Driver");
-//            dataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/postgres");
-//            dataSource.setUser("admin");
-//            dataSource.setPassword("admin");
 
         } catch (PropertyVetoException e) {
             e.printStackTrace();

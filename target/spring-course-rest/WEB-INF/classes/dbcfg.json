@@ -1,7 +1,7 @@
 [
   {
     "setDriverClass": "org.postgresql.Driver",
-    "setJdbcUrl": "jdbc:postgresql://localhost:5432/postgres",
+    "setJdbcUrl": "jdbc:postgresql://localhost:5432/postgres?currentSchema=bank",
     "setUser": "admin",
     "setPassword": "admin"
   }

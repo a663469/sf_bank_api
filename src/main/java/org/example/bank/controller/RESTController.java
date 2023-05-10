@@ -1,7 +1,7 @@
 package org.example.bank.controller;
 
 import org.example.bank.entity.Account;
-import org.example.bank.entity.OperationList;
+import org.example.bank.entity.Operation;
 import org.example.bank.entity.operations.PutMoney;
 import org.example.bank.entity.operations.TakeMoney;
 import org.example.bank.service.AccountService;
@@ -19,9 +19,14 @@ public class RESTController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping("/")
+    @GetMapping("/account")
     public List<Account> showAllAccounts() {
         return accountService.showAllAccounts();
+    }
+
+    @GetMapping("/operation")
+    public List<Operation> showAllOperations() {
+        return accountService.showAllOperations();
     }
 
     @GetMapping("/account/{id}")
@@ -39,37 +44,36 @@ public class RESTController {
 
     @PostMapping("/account/take")
     public RetValBool takeMoney(@RequestBody TakeMoney takeMoney) {
-        System.out.println("takeMoney");
         RetValBool retVal = new RetValBool();
         try {
-            retVal.setValue(accountService.takeMoney(takeMoney));
-            retVal.setMessage("The operation was completed successfully");
+            retVal = accountService.takeMoney(takeMoney.getIdAccount(), takeMoney.getAmount());
         } catch (Exception e) {
             retVal.setValue(false);
-            retVal.setMessage("Error: " + e.toString());
+            retVal.setMessage("The error was caught by the REST controller: " + e.toString());
         }
         return retVal;
     }
 
     @PostMapping("/account/put")
     public RetValBool putMoney(@RequestBody PutMoney putMoney) {
-        System.out.println("putMoney");
         RetValBool retVal = new RetValBool();
         try {
-            retVal.setValue(accountService.putMoney(putMoney.getIdAccount(), putMoney.getAmount()));
+            retVal = accountService.putMoney(putMoney.getIdAccount(), putMoney.getAmount());
             retVal.setMessage("The operation was completed successfully");
         } catch (Exception e) {
             retVal.setValue(false);
-            retVal.setMessage("Error: " + e.toString());
+            retVal.setMessage("The error was caught by the REST controller: " + e.toString());
         }
         return retVal;
     }
 
-    public OperationList getOperationList(@PathVariable long id, LocalDateTime startDateTime, LocalDateTime endDateTime) {
-        return new OperationList();
+    @GetMapping("/account/operations/{id}")
+    public List<Operation> getOperationList(@PathVariable long id) {
+        System.out.println("id = " + id);
+        return accountService.getOperationList(id);
     }
 
-    public boolean transferMoney(@PathVariable long idFrom, long idTo, double summa) {
+    public boolean transferMoney(@PathVariable long idFrom, long idTo, double amount) {
         return false;
     }
 }

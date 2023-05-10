@@ -1,16 +1,23 @@
 package org.example.bank.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "bank.accounts")
+@Table(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     @Column(name = "balance")
-    private double balance = 0;
+    private double balance;
+    public Account() {
+    }
+    public Account(double balance) {
+        this.balance = balance;
+    }
 
     public Long getId() {
         return id;
@@ -19,6 +26,7 @@ public class Account {
     public void setId(Long id) {
         this.id = id;
     }
+
     public double getBalance() {
         return balance;
     }

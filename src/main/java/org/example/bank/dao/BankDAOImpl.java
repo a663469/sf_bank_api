@@ -1,12 +1,15 @@
 package org.example.bank.dao;
 
 import org.example.bank.entity.Account;
+import org.example.bank.entity.Operation;
 import org.example.bank.entity.operations.TakeMoney;
+import org.example.bank.enums.OperationType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -23,19 +26,25 @@ public class BankDAOImpl implements BankDAO {
     }
 
     @Override
-    public double putMoney(long id, double money) {
+    public synchronized boolean putMoney(long id, double money) {
         Session session = sessionFactory.getCurrentSession();
         Account account = session.get(Account.class, id);
         account.setBalance(account.getBalance() + money);
-        return account.getBalance();
+        return true;
     }
 
     @Override
-    public double takeMoney(TakeMoney takeMoney) {
-        Session session = sessionFactory.getCurrentSession();
-        Account account = session.get(Account.class, takeMoney.getIdAccount());
-        account.setBalance(account.getBalance() - takeMoney.getAmount());
-        return account.getBalance();
+    public synchronized boolean takeMoney(long id, double amount) {
+        boolean retVal = false;
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            Account account = session.get(Account.class, id);
+            account.setBalance(account.getBalance() - amount);
+            retVal = true;
+        } catch (Exception e) {
+            System.out.println("Error in BankDAOImpl.takeMoney: " + e);
+        }
+        return retVal;
     }
 
     @Override
@@ -43,5 +52,34 @@ public class BankDAOImpl implements BankDAO {
         Session session = sessionFactory.getCurrentSession();
         List<Account> accountList = session.createQuery("from Account", Account.class).getResultList();
         return accountList;
+    }
+
+    @Override
+    public List<Operation> showAllOperations() {
+        Session session = sessionFactory.getCurrentSession();
+        List<Operation> operationList = session.createQuery("from Operation", Operation.class).getResultList();
+        return operationList;
+    }
+
+    @Override
+    public List<Operation> getOperationList(long id) {
+        Session session = sessionFactory.getCurrentSession();
+        List<Operation> operationList = session.createQuery("from Operation where account_id =:id", Operation.class)
+                .setParameter("id", id).getResultList();
+        return operationList;
+    }
+
+    @Override
+    public boolean saveOrUpdateOperation(Operation operation) {
+        boolean retVal = false;
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            session.saveOrUpdate(operation);
+            retVal = true;
+        } catch (Exception e) {
+            System.out.println("Error in BankDAOImpl.saveOrUpdateOperation: " + e);
+            retVal = false;
+        }
+        return retVal;
     }
 }
