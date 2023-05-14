@@ -2,6 +2,7 @@ package org.example.bank.controller;
 
 import org.example.bank.entity.Account;
 import org.example.bank.entity.Operation;
+import org.example.bank.entity.TransferData;
 import org.example.bank.entity.operations.PutMoney;
 import org.example.bank.entity.operations.TakeMoney;
 import org.example.bank.service.AccountService;
@@ -73,7 +74,17 @@ public class RESTController {
         return accountService.getOperationList(id);
     }
 
-    public boolean transferMoney(@PathVariable long idFrom, long idTo, double amount) {
-        return false;
+    @PostMapping("/account/t")
+    public RetValBool transferMoney(@RequestBody TransferData td) {
+        System.out.println("transferMoney!!!!");
+        RetValBool retVal = new RetValBool();
+        try {
+            retVal = accountService.transferMoney(td.getIdFrom(), td.getIdTo(), td.getAmount());
+            retVal.setMessage("The operation was completed successfully");
+        } catch (Exception e) {
+            retVal.setValue(false);
+            retVal.setMessage("The error was caught by the REST controller: " + e.toString());
+        }
+        return retVal;
     }
 }

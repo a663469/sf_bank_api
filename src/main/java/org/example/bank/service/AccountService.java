@@ -14,7 +14,7 @@ public interface AccountService {
     public RetValBool putMoney(long id, double amount);
     public RetValBool takeMoney(long id, double amount);
     public List<Operation> getOperationList(long id);
-    public boolean transferMoney(long idFrom, long idTo, double amount);
+    public RetValBool transferMoney(long idFrom, long idTo, double amount);
     public List<Account> showAllAccounts();
     public List<Operation> showAllOperations();
 }

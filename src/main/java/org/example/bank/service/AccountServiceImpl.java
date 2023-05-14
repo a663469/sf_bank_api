@@ -98,14 +98,19 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     @Transactional
-    public List<Operation> getOperationList(long id) {
-        return bankDAO.getOperationList(id);
+    public RetValBool transferMoney(long idFrom, long idTo, double amount) {
+        RetValBool retValBool = new RetValBool(false, "Error");
+        if(bankDAO.transferMoney(idFrom, idTo, amount)) {
+            retValBool.setValue(true);
+            retValBool.setMessage("The transfer was completed successfully");
+        }
+        return retValBool;
     }
 
     @Override
     @Transactional
-    public boolean transferMoney(long idFrom, long idTo, double amount) {
-        return false;
+    public List<Operation> getOperationList(long id) {
+        return bankDAO.getOperationList(id);
     }
 
     @Override

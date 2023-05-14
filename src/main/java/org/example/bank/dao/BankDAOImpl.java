@@ -25,6 +25,22 @@ public class BankDAOImpl implements BankDAO {
         return account.getBalance();
     }
 
+//    @Override
+//    public boolean addReservation(long id, double amount) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Account account = session.get(Account.class, id);
+//        account.addReservation(amount);
+//        return true;
+//    }
+
+//    @Override
+//    public boolean removeReservation(long id, double amount) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Account account = session.get(Account.class, id);
+//        account.removeReservation(amount);
+//        return true;
+//    }
+
     @Override
     public synchronized boolean putMoney(long id, double money) {
         Session session = sessionFactory.getCurrentSession();
@@ -78,6 +94,22 @@ public class BankDAOImpl implements BankDAO {
             retVal = true;
         } catch (Exception e) {
             System.out.println("Error in BankDAOImpl.saveOrUpdateOperation: " + e);
+            retVal = false;
+        }
+        return retVal;
+    }
+
+    @Override
+    public boolean transferMoney(long idFrom, long idTo, double amount) {
+        boolean retVal = false;
+        Session session = sessionFactory.getCurrentSession();
+        Account accountFrom = session.get(Account.class, idFrom);
+        Account accountTo = session.get(Account.class, idTo);
+        if(accountFrom.getBalance() - amount > 0) {
+            accountFrom.setBalance(accountFrom.getBalance() - amount);
+            accountTo.setBalance(accountTo.getBalance() + amount);
+            retVal = true;
+        } else {
             retVal = false;
         }
         return retVal;

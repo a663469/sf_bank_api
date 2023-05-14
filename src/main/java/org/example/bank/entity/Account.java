@@ -13,6 +13,10 @@ public class Account {
     private Long id;
     @Column(name = "balance")
     private double balance;
+
+//    @Column(name = "booking")
+//    private double booking = 0;
+
     public Account() {
     }
     public Account(double balance) {
@@ -34,6 +38,18 @@ public class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
+
+//    public double getBooking() {
+//        return booking;
+//    }
+//
+//    public void addReservation(double amount) {
+//        booking = booking + amount;
+//    }
+//
+//    public void removeReservation(double amount) {
+//        booking = booking - amount;
+//    }
 
     @Override
     public String toString() {
